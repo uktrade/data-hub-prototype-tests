@@ -9,7 +9,7 @@ Feature: Allow a user to archive a company
       | Test company B  | True     | Sole trader   | Automotive | London | 20 The Street Lane   | LONDON                  | SW1 2AA                     | Sole Trader             | Active         |              |              |                      |
       | Test company C  | True     | Sole trader   | Aerospace  | London | 30 The Street Lane   | LONDON                  | SW1 3AA                     | Private Limited Company | Active         |              |              |                      |
       | Test company D  | True     | Sole trader   | Education  | London | 40 The Street Lane   | LONDON                  | SW1 4AA                     | Private Limited Company | Active         |              |              |                      |
-      | Test company E  | True     | Sole trader   | Nuclear    | London | 50 The Street Lane   | LONDON                  | SW1 5AA                     | Private Limited Company | Active         |              |              |                      |
+      | Test company E  | True     | Sole trader   | Nuclear    | London | 50 The Street Lane   | LONDON                  | SW1 5AA                     | Private Limited Company | Active         | 2016-01-10   | Fred Smith   | Company is dissolved |
     And contacts exist with
       | company         | title | first_name | last_name | role     | email          | phone         |
       | Test company A  | Mr    | Fred       | Smith     | Director | fred@acme.com  | 07777 777 777 |
@@ -86,7 +86,7 @@ Feature: Allow a user to archive a company
 
 
   Scenario: Don't warn the user about not being able to add interactions
-    When the user views company "Test company A"
+    When the user views company "Test company E"
     Then the user selects the "Interactions" tab
     And the user does not see an error summary
 

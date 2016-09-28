@@ -17,9 +17,9 @@ def can_add_interaction(context):
     return 'button-disabled' not in class_names and url[0] != '#'
 
 
-def post_interaction_data(contacts_table):
+def post_interaction_data(interactions_table):
     interactions.clear()
-    for line in contacts_table:
+    for line in interactions_table:
         post_data = utils.translate_line_to_dict(line)
         company = companyapi.get_company_for_name(post_data['company'])
         contact = contactapi.get_contact_for_name(post_data['contact'])
