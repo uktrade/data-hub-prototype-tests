@@ -1,8 +1,8 @@
 from behave import *
 from hamcrest import *
 import requests
-
-from features.environment import API_ROOT
+import time
+from features.environment import API_ROOT, WEB_ROOT
 from features.support import companyapi, contactapi, interactionapi, page
 
 
@@ -108,3 +108,17 @@ def cannot_edit_company(context):
 @step('the user views company "{company_name}"')
 def view_company(context, company_name):
     companyapi.view_company(context=context, company_name=company_name)
+
+
+@step('The user is on the add company page')
+def goto_add_company(context):
+    context.browser.get('%s/company/add' % WEB_ROOT)
+    time.sleep(1)
+
+
+@step('The user should see the company details screen')
+def is_on_company_detail(context):
+    should_have = '/company/COMBINED'
+    url = context.browser.current_url
+    assert_that(url.lower(), contains_string(should_have.lower()))
+
