@@ -100,4 +100,6 @@ def check_value_for_heading(context, field_name, field_value):
         ''' % field_name
 
         text = context.browser.execute_script(script)
+        print('----------- %s ---------' % field_name)
+        assert_that(text, not_none())
         assert_that(text.lower(), contains_string(field_value.lower()))

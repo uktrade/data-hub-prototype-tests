@@ -57,7 +57,7 @@ def click_save(context):
     """
     button = get_element_for_text(context=context, text='Save')
     button.click()
-    time.sleep(1)
+    time.sleep(3)
 
 
 
